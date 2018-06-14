@@ -8,6 +8,15 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    return erb :index
+    erb :index
   end
+  
+  post '/' do
+    the_occasion = params[:occasion]
+    the_gender = params[:gender]
+    the_weather = params[:weather]
+    @result_stuff = check(the_occasion, the_gender, the_weather)
+    erb :results
+  end
+  
 end
